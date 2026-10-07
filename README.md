@@ -223,7 +223,7 @@ to cite the paper, the primary reference for the method:
 
 > Zaid, M. G., Kole, M., McConnell, M., Muleri, F., and Li, H., "A Generalized Framework for Rapid Polarization Response Generation in Wide Field-of-View Compton Polarimeters", The Astrophysical Journal, 2026, submitted.
 
-and the archived software release, MENHAG version [MENHAG-VERSION], DOI [ZENODO-DOI]. The source is hosted at https://github.com/AstrophyJimmy/menhag; GitHub's "Cite this repository" button uses the `CITATION.cff` file.
+and the archived software release, MENHAG version 1.0.0, DOI 10.5281/zenodo.23204599. The source is hosted at https://github.com/AstrophyJimmy/menhag; GitHub's "Cite this repository" button uses the `CITATION.cff` file.
 
 ## License
 

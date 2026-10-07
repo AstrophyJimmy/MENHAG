@@ -4,8 +4,8 @@ message: >-
   the primary reference for the method, and the archived software release.
 type: software
 title: "MENHAG: Modulation ENgine for Harmonic ASAD Generation"
-version: "[MENHAG-VERSION]"
-doi: "[ZENODO-DOI]"
+version: "1.0.0"
+doi: "10.5281/zenodo.23204599"
 license: MIT
 repository-code: "https://github.com/AstrophyJimmy/menhag"
 keywords:
