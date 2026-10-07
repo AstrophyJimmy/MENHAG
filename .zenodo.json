@@ -1,0 +1,30 @@
+{
+  "title": "MENHAG: Modulation ENgine for Harmonic ASAD Generation",
+  "upload_type": "software",
+  "description": "MENHAG builds the polarization response of a wide field-of-view Compton polarimeter, the set of azimuthal scattering angle distributions over photon energy and polarization angle, from a small set of simulated inputs: from the unpolarized simulation alone through the analytic modulation kernel of the gated, frame-transformed Klein-Nishina cross-section (mode 1), or from the unpolarized simulation and fully polarized simulations at two polarization angles per energy (mode 2). It is the code behind the paper A Generalized Framework for Rapid Polarization Response Generation in Wide Field-of-View Compton Polarimeters (Zaid et al., The Astrophysical Journal, submitted 2026), released so that anyone can generate responses for their own instrument.",
+  "creators": [
+    {
+      "name": "Zaid, Mohamed Gamal",
+      "affiliation": "University of New Hampshire, Space Science Center",
+      "orcid": "0009-0003-3658-3316"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "gamma-ray bursts",
+    "polarimetry",
+    "Compton scattering",
+    "instrument response",
+    "wide field-of-view instruments",
+    "POLAR"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/AstrophyJimmy/menhag",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}

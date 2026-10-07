@@ -1,0 +1,45 @@
+# Byte-compiled and cache files
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+.ipynb_checkpoints/
+
+# Packaging and build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test and tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Data and outputs. The repository ships no POLAR data file and nothing
+# derived from one: examples/data/ is where a user places a local copy of
+# a collaboration file for the notebooks, and generated responses land in
+# examples/output/ and quickstart_output/. The synthetic sample data in
+# examples/sample_data/ and the off-axis reference fixture in tests/data/
+# are tracked.
+examples/data/
+examples/output/
+outputs/
+quickstart_output/
+*.root
+*.fits
+*.prsp
+*.npz
+!tests/data/offaxis_reference.npz
+
+# Editor and OS clutter
+.vscode/
+.idea/
+.DS_Store

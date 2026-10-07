@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "menhag"
+dynamic = ["version"]
+description = "MENHAG: Modulation ENgine for Harmonic ASAD Generation. Polarization responses of wide field-of-view Compton polarimeters from a small set of simulated inputs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Mohamed Gamal Zaid" },
+]
+keywords = [
+    "polarimetry",
+    "compton scattering",
+    "gamma-ray",
+    "instrument response",
+    "astrophysics",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+# Core runtime dependencies: numpy and scipy only. Everything else is an
+# optional extra with lazy imports, so the core install stays minimal.
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+root = ["uproot>=5.0", "hist>=2.6"]   # ROOT histogram I/O (the POLAR-style format)
+fits = ["astropy>=5.0"]               # FITS table I/O and .prsp export
+csv = ["pandas>=1.5"]                 # CSV I/O
+yaml = ["pyyaml>=6.0"]                # YAML configurations and the build subcommand
+parallel = ["joblib>=1.2"]            # parallel response builds over energies
+viz = ["matplotlib>=3.6"]             # validation plots
+dev = [
+    "pytest>=7.0",
+    "pyyaml>=6.0",
+    "joblib>=1.2",
+    "uproot>=5.0",
+    "hist>=2.6",
+    "astropy>=5.0",
+    "pandas>=1.5",
+    "matplotlib>=3.6",
+]
+all = [
+    "pyyaml>=6.0",
+    "joblib>=1.2",
+    "uproot>=5.0",
+    "hist>=2.6",
+    "astropy>=5.0",
+    "pandas>=1.5",
+    "matplotlib>=3.6",
+]
+
+[project.scripts]
+menhag = "menhag.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/AstrophyJimmy/menhag"
+Repository = "https://github.com/AstrophyJimmy/menhag"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+menhag = ["py.typed"]
+
+[tool.setuptools.dynamic]
+version = { attr = "menhag.__version__" }

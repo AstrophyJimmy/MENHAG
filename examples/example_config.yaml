@@ -1,0 +1,100 @@
+# Example configuration for `menhag build -c example_config.yaml`
+#
+# Everything outside the io section maps onto menhag.config.ResponseConfig;
+# the io section selects the file adapter. Angles are degrees, energies keV.
+
+# Monoenergetic simulation energies of the unpolarized inputs. The energy
+# grid is free; the POLAR responses use range(5, 751, 5).
+energies: [100.0, 200.0, 300.0]
+
+# Source geometry: zenith (delta) and azimuth (lambda) incidence angles.
+delta: 30.0
+lambda: 0.0
+
+# Threshold gate. The erf gate is the default model: mu is the average
+# detection threshold of the instrument and sigma the effective width of
+# the turn-on, both in keV. Both numbers are instrument specific: measure
+# or fit them for your detector. The values below are the POLAR example
+# of the paper (see examples/polar_gate.json for their basis; for a clean
+# instrument sigma is the resolution near threshold, for POLAR it is an
+# effective parameter; see Li et al. 2018 for the POLAR calibration).
+threshold:
+  type: erf
+  mu: 25.0
+  sigma: 75.0
+
+# Alternatively, load the gate from a small JSON description file
+# (give either threshold or gate_json, not both):
+# gate_json: examples/polar_gate.json
+
+# Polarization-angle grid of the generated response. The simplest choice
+# is pol_step, the step of the regular endpoint-inclusive [0, 180] grid:
+# the POLAR convention is a 3 degree step (61 angles, 0 to 180 inclusive;
+# the 180 degree entry repeats the configuration of 0 degrees and is kept
+# for the closed interval the threeML and polpy readers expect); 1 degree
+# gives 181 angles, and sub-degree steps are accepted.
+pol_step: 3
+
+# Alternatively, spell the grid out (give either pol_step or pol_angles,
+# not both). Lists are literal angle sets; the start/stop/step form is a
+# generated, endpoint-inclusive grid. Set include_endpoint: false to drop
+# the 180 degree entry from generated grids.
+# pol_angles:
+#   start: 0
+#   stop: 180
+#   step: 3
+# include_endpoint: true
+
+# Polarization fraction of the generated ASADs.
+pol_fraction: 1.0
+
+# Normalization factor f of the inputs (Poisson errors
+# sigma = sqrt(n * f) / f when the input files carry no error bars;
+# enters the errors only).
+norm_factor: 1.0
+
+# The kernel always renormalizes every output to the counts of its
+# unpolarized input; only true is accepted.
+preserve_counts: true
+
+# Run mode: full (mode 1 over the grid), spectrum (mode 1,
+# spectrum-integrated), or polarized (mode 2).
+mode: full
+
+# Mode 2 input polarization angles, two or more, in degrees. The default is
+# 0 and 45; with more than two angles the coefficients are solved by least
+# squares per bin and the fit residual is reported. The command-line flag
+# --basis-angles overrides this key.
+# basis_angles: [0, 45]
+
+# Parallelism over energies; -1 uses every core when the optional joblib
+# extra is installed (pip install menhag[parallel]), otherwise serial.
+n_jobs: -1
+
+# File input and output. format is one of root, fits, csv, prsp. For ROOT
+# files key_template names the histogram for each (energy, pol fraction,
+# angle); unpolarized inputs are looked up at pol = 0, and mode 2 reads the
+# polarized inputs at pol = 100 and the configured angles. norm_factor
+# (optional) attaches Poisson errors sqrt(n f) / f to the ASADs read from
+# ROOT, FITS-table or prsp inputs whose stored errors are not statistical.
+io:
+  format: root
+  input_path: data/unpolarized_sims.root
+  output_path: outputs/polarized_response.root
+  key_template: "sim_{energy:03d}_{pol:03d}_{angle:03d}"
+
+# The .prsp export (the polarization response read by polpy). With a ROOT
+# build, prsp_output and rmfarf_path (the ROOT file with the ER_low and
+# ER_high energy edges) export the written response as well; with
+# format: prsp the input and output are .prsp files. prsp_layout selects
+# the angle order written: polpy-1.2.1 (the current polpy release, the
+# default) or polarpy (the earlier plug-in behind the fits of the paper);
+# the flag --prsp-layout overrides it. A .prsp input names its own order
+# in its PALAYOUT keyword; layout gives it for a file without one.
+# io:
+#   format: root
+#   input_path: data/unpolarized_sims.root
+#   output_path: outputs/polarized_response.root
+#   prsp_output: outputs/polarized_response.prsp
+#   rmfarf_path: data/rmf_arf.root
+#   prsp_layout: polpy-1.2.1

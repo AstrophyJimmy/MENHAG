@@ -1,0 +1,39 @@
+# Optional: one environment for response production, the tests and the
+# notebooks, and polarization fits with threeML and polpy. Run from the
+# package directory (the one holding this file):
+#   conda env create -f environment-fit.yml
+#   conda activate menhag-fit
+# Creating the environment installs the package itself, editable, from
+# this directory (the pip section below). Python 3.12 is the floor polpy
+# sets. conda-forge comes first: threeml is
+# a noarch package there, while astromodels for Apple silicon (osx-arm64)
+# exists only on the threeml channel, which comes second; the two pins
+# keep the solver from reaching for the older threeml builds of that
+# channel. multinest and pymultinest come from conda-forge. polpy is
+# pip-only.
+name: menhag-fit
+channels:
+  - conda-forge
+  - threeml
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - pyyaml
+  - joblib
+  - uproot
+  - hist
+  - astropy
+  - pytest
+  - ipykernel
+  - nbconvert
+  - threeml=2.6.1
+  - astromodels=2.6.0
+  - multinest
+  - pymultinest
+  - pip
+  - pip:
+      - polpy
+      - -e .

@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: >-
+  If this software contributes to your work, please cite the paper below,
+  the primary reference for the method, and the archived software release.
+type: software
+title: "MENHAG: Modulation ENgine for Harmonic ASAD Generation"
+version: "[MENHAG-VERSION]"
+doi: "[ZENODO-DOI]"
+license: MIT
+repository-code: "https://github.com/AstrophyJimmy/menhag"
+keywords:
+  - gamma-ray bursts
+  - polarimetry
+  - Compton scattering
+  - instrument response
+authors:
+  - family-names: Zaid
+    given-names: Mohamed Gamal
+    orcid: "https://orcid.org/0009-0003-3658-3316"
+    affiliation: "University of New Hampshire, Space Science Center"
+preferred-citation:
+  type: article
+  status: submitted
+  title: >-
+    A Generalized Framework for Rapid Polarization Response Generation in
+    Wide Field-of-View Compton Polarimeters
+  authors:
+    - family-names: Zaid
+      given-names: Mohamed Gamal
+      orcid: "https://orcid.org/0009-0003-3658-3316"
+    - family-names: Kole
+      given-names: Merlin
+      orcid: "https://orcid.org/0000-0003-0441-4959"
+    - family-names: McConnell
+      given-names: Mark
+      orcid: "https://orcid.org/0000-0001-8186-5978"
+    - family-names: Muleri
+      given-names: Fabio
+      orcid: "https://orcid.org/0000-0003-3331-3794"
+    - family-names: Li
+      given-names: Hancheng
+      orcid: "https://orcid.org/0000-0002-5963-1494"
+  year: 2026
+  journal: "The Astrophysical Journal"

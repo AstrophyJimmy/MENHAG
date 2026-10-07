@@ -1,0 +1,10 @@
+{
+  "family": "M2",
+  "mu": 25.0,
+  "sigma": 75.0,
+  "tag": "erf_25u_75s",
+  "note": "The POLAR gate of the accompanying paper. These values are specific to POLAR; treat them as an example for other instruments, never as a default.",
+  "mu_basis": "The average per-bar detection threshold of POLAR: the in-orbit threshold position of about 200 ADC at the typical gain of about 8 ADC per keV gives about 25 keV (Li et al. 2018, Nucl. Instrum. Meth. A 900, 8-24).",
+  "sigma_basis": "The effective width of the threshold turn-on, fitted against the unpolarized POLAR response. It is much wider than the energy resolution because optical crosstalk between neighboring bars (about 20 percent to each edge neighbor), channel-to-channel gain spread, and the event selection all smear the effective turn-on.",
+  "prescription": "How to choose these two numbers for another instrument: use the average detection threshold of the instrument for mu. For sigma, use a width representative of the effects that smear the turn-on: for a clean instrument this is simply the energy resolution near the threshold, i.e. the Gaussian broadening of a spectral peak there; for an instrument like POLAR, with significant crosstalk and selection effects, sigma is an effective parameter and should be fitted."
+}

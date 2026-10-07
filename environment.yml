@@ -1,0 +1,31 @@
+# The environment for response production, the tests and the notebooks.
+# Run from the package directory (the one holding this file):
+#   conda env create -f environment.yml
+#   conda activate menhag
+# Creating the environment installs the package itself, editable, from
+# this directory (the pip section below), so nothing else is needed. It
+# carries every optional dependency (ROOT, FITS, CSV, YAML, parallel
+# builds, plots, tests) together with ipykernel and nbconvert, so that
+# every adapter, the test suite and the three notebooks run in it. The
+# core package itself needs only numpy and scipy. Fitting with threeML
+# and polpy needs environment-fit.yml instead.
+name: menhag
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - joblib
+  - pyyaml
+  - pandas
+  - matplotlib
+  - uproot
+  - hist
+  - astropy
+  - pytest
+  - ipykernel
+  - nbconvert
+  - pip
+  - pip:
+      - -e .
